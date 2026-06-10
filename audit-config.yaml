@@ -1,0 +1,39 @@
+# deepcode-audit 配置文件
+# 所有项均为可选，未配置的项使用默认值
+
+# 审计范围
+scope:
+  path: "."
+  exclude:
+
+# 视角配置
+perspectives:
+  # 核心视角（默认全部启用，通常不需要改）
+  core:
+    v1_engineering: true
+    v2_product: true
+    v3_quality: true
+    v4_ai_audit: true
+    v5_self_review: true
+    v6_cross_role: true
+    v7_security: true
+
+  # 领域视角：可手动强制开关，不配置则走自动检测
+  domains:
+    # data_engineering: "auto"   # auto(默认) | true | false
+    # mobile: "auto"             # auto(默认) | true | false
+
+# 领域视角自动检测
+domain_detection:
+  enabled: true                  # 是否启用自动检测
+  min_hits: 1                    # 命中多少次关键词后启用
+
+# 任务调度
+scheduling:
+  max_retries: 3                 # 单个任务最大重试次数
+  batch_by: "file"               # 派发粒度: file
+
+# 报告
+report:
+  output_dir: "docs"
+  filename: "系统审计报告-{date}.md"
